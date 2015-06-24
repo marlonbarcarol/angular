@@ -1,0 +1,38 @@
+<div style="text-align: center;">
+	<input type="search" class="form-control" ng-model="busca" placeholder="Filtrar móveis" aria-label="filter móveis" />
+	<table class="table table-striped table-hover">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Imagem</th>
+				<th><a href="javascript:void(0);" ng-click="ordenarPor('codigo')">Código</a></th>
+				<th><a href="javascript:void(0);" ng-click="ordenarPor('nome')">Nome</a></th>
+				<th><a href="javascript:void(0);" ng-click="ordenarPor('descricao')">Descrição</a></th>
+				<th><a href="javascript:void(0);" ng-click="ordenarPor('altura')">Altura</a></th>
+				<th><a href="javascript:void(0);" ng-click="ordenarPor('largura')">Largura</a></th>
+				<th><a href="javascript:void(0);" ng-click="ordenarPor('profundide')">Profundidade</a></th>
+				<th><a href="javascript:void(0);" ng-click="ordenarPor('camadas.length')">Qnt. Camadas</a></th>
+				<th>Ver</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td colspan="10">
+					<h2 class="text-center">Nenhum item encontrado</h2>
+				</td>
+			</tr>
+			<tr ng-repeat="movel in moveis | filter:busca | orderBy:criterioDeOrdenacao:direcaoDaOrdenacao">
+				<td><input type="checkbox" ng-model="movel.selecionado"/></td>
+				<td>{{movel.imagem}}</td>
+				<td>{{movel.codigo}}</td>
+				<td>{{movel.nome}}</td>
+				<td>{{movel.descricao}}</td>
+				<td>{{movel.altura}}</td>
+				<td>{{movel.largura}}</td>
+				<td>{{movel.profundidade}}</td>
+				<td>{{movel.camadas.length}}</td>
+			</tr>
+		</tbody>
+	</table>
+	<button class="btn btn-danger btn-block" ng-click="apagarMoveis(moveis)">Apagar Móveis</button>
+</div>
